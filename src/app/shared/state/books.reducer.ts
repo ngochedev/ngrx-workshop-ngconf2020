@@ -39,3 +39,11 @@ export const booksReducer = createReducer(
         }
     })
 )
+
+/*
+ NOTE: Pre-IVey - Since AOT compiler cannot resolve dynamically generated function inside createReducer, need to
+ wrap the reducer in an actual function
+*/
+export function reducer(state: State | undefined, action: Action) {
+    return booksReducer(state, action);
+}
