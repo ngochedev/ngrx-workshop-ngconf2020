@@ -11,3 +11,20 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const metaReducers: MetaReducer<State>[] = [];
+
+export const selectBooksState = (state: State) => state.books;
+
+export const selectActiveBook = createSelector(
+    selectBooksState,
+    (booksState) => fromBooks.selectActiveBook(booksState)
+)
+
+export const selectAllBooks = createSelector(
+    selectBooksState,
+    (booksState) => fromBooks.selectAll(booksState)
+)
+
+export const selectBooksTotalEarning = createSelector(
+    selectBooksState,
+    (booksState) => fromBooks.selectEarningsTotal(booksState)
+)
